@@ -1,4 +1,9 @@
 # Simlib Project
+
+[![Build Status](https://travis-ci.org/ryctabo/simlib.svg?branch=master)](https://travis-ci.org/ryctabo/simlib)
+[![Coverage Status](https://coveralls.io/repos/github/ryctabo/simlib/badge.svg)](https://coveralls.io/github/ryctabo/simlib)
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 The Simlib project is a library of lightweight that contains components of mathematics, equations, statistics, among others that are not commonly found in the native Java library, this library can be used in simulation projects and more.
 
 ## Contributing
