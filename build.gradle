@@ -11,6 +11,9 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.easymock:easymock:3.4'
+    testImplementation 'org.powermock:powermock-module-junit4:1.7.0'
+    testImplementation 'org.powermock:powermock-api-easymock:1.7.0'
 }
 
 jar {
