@@ -1,6 +1,6 @@
 # Simlib Project
 
-[![Build Status](https://travis-ci.org/ryctabo/simlib.svg?branch=master)](https://travis-ci.org/ryctabo/simlib)
+[![Build Status](https://travis-ci.org/ryctabo/simlib.svg?branch=develop)](https://travis-ci.org/ryctabo/simlib)
 [![Coverage Status](https://coveralls.io/repos/github/ryctabo/simlib/badge.svg)](https://coveralls.io/github/ryctabo/simlib)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
