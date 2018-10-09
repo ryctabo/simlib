@@ -69,9 +69,25 @@ public class MathUtilsPrimeFactorsTest {
 
     /**
      * Test getPrimeFactors() method.
+     *
+     * @see MathUtils#getPrimeFactors(int)
      */
     @Test
-    public void testGetPrimeFactors() {
+    public void testGetPrimeFactorsInt() {
         assertArrayEquals(expected, MathUtils.getPrimeFactors(value));
     }
+
+    /**
+     * Test getPrimeFactors() method.
+     *
+     * @see MathUtils#getPrimeFactors(int)
+     */
+    @Test
+    public void testGetPrimeFactorsLong() {
+        long[] expected = new long[this.expected.length];
+        for (int i = 0; i < this.expected.length; i++)
+            expected[i] = (long) this.expected[i];
+        assertArrayEquals(expected, MathUtils.getPrimeFactors((long) value));
+    }
+
 }

@@ -35,12 +35,12 @@ public class MathUtilsPlusTest {
     /**
      * Expected value.
      */
-    private final long expected;
+    private final int expected;
 
     /**
      * Array of values to plus.
      */
-    private final long[] values;
+    private final int[] values;
 
     /**
      * Create a new object.
@@ -48,7 +48,7 @@ public class MathUtilsPlusTest {
      * @param expected expected value
      * @param values   array of values to plus
      */
-    public MathUtilsPlusTest(long expected, long[] values) {
+    public MathUtilsPlusTest(int expected, int[] values) {
         this.expected = expected;
         this.values = values;
     }
@@ -61,20 +61,33 @@ public class MathUtilsPlusTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> getData() {
         return Arrays.asList(new Object[][]{
-                {0, new long[0]},
-                {6, new long[]{3, 2, 1}},
-                {-1, new long[]{3, 2, -6}},
-                {15, new long[]{8, 2, 4, 1}}
+                {0, new int[0]},
+                {6, new int[]{3, 2, 1}},
+                {-1, new int[]{3, 2, -6}},
+                {15, new int[]{8, 2, 4, 1}}
         });
     }
 
     /**
-     * Test sum method.
+     * Test plus method.
      *
      * @see MathUtils#plus(long...)
      */
     @Test
-    public void test() {
+    public void testPlusLong() {
+        long[] values = new long[this.values.length];
+        for (int i = 0; i < this.values.length; i++)
+            values[i] = (long) this.values[i];
+        Assert.assertEquals((long) expected, MathUtils.plus(values));
+    }
+
+    /**
+     * Test plus method.
+     *
+     * @see MathUtils#plus(int...)
+     */
+    @Test
+    public void testPlusInt() {
         Assert.assertEquals(expected, MathUtils.plus(values));
     }
 }
