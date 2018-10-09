@@ -26,8 +26,8 @@ import java.util.Arrays;
 /**
  * Test cases for the <strong>MathUtils</strong> class in the plus methods.
  *
- * @author Gustavo Pacheco
- * @version 1.0
+ * @author Gustavo Pacheco (ryctabo at gmail.com)
+ * @version 1.0-SNAPSHOT
  */
 @RunWith(Parameterized.class)
 public class MathUtilsPlusTest {

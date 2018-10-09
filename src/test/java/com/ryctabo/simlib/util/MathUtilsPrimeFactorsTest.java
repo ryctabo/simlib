@@ -26,8 +26,8 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 /**
- * @author Gustavo Pacheco
- * @version 1.0
+ * @author Gustavo Pacheco (ryctabo at gmail.com)
+ * @version 1.0-SNAPSHOT
  */
 @RunWith(Parameterized.class)
 public class MathUtilsPrimeFactorsTest {

@@ -28,8 +28,8 @@ import static org.junit.Assert.*;
 /**
  * Test cases for the <strong>MathUtils</strong> class.
  *
- * @author Gustavo Pacheco
- * @version 1.0
+ * @author Gustavo Pacheco (ryctabo at gmail.com)
+ * @version 1.0-SNAPSHOT
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({MathUtils.class})
@@ -153,8 +153,14 @@ public class MathUtilsTest {
     }
 
     @Test
-    public void testPlusWithDecimal() throws Exception {
+    public void testPlusWithDecimal() {
         assertEquals(6.30d, MathUtils.plus(1.5d, 1.6d, 3.2d), 1e-2);
         assertEquals(6.30f, MathUtils.plus(1.5f, 1.6f, 3.2f), 1e-2);
     }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testConstructor() throws IllegalAccessException, InstantiationException {
+        MathUtils.class.newInstance();
+    }
+
 }
