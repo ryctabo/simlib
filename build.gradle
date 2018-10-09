@@ -1,13 +1,14 @@
-group 'com.github.ryctabo'
-version '0.1.0-SNAPSHOT'
-
 apply plugin: 'java-library'
 
-sourceCompatibility = 1.8
+group 'com.github.ryctabo'
+version '1.0.0-SNAPSHOT'
 
 repositories {
     jcenter()
 }
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     testImplementation 'junit:junit:4.12'
