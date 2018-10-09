@@ -22,8 +22,8 @@ import java.util.List;
 /**
  * The <strong>MathUtils</strong> class contains only utility functions.
  *
- * @author Gustavo Pacheco
- * @version 1.0
+ * @author Gustavo Pacheco (ryctabo at gmail.com)
+ * @version 1.0-SNAPSHOT
  */
 public final class MathUtils {
 
@@ -38,6 +38,7 @@ public final class MathUtils {
      * Result the sum of all {@code int} values.
      *
      * @param values the arguments to be plus
+     *
      * @return the sum of all arguments
      */
     public static int plus(int... values) {
@@ -51,6 +52,7 @@ public final class MathUtils {
      * Result the sum of all {@code long} values.
      *
      * @param values the arguments to be plus
+     *
      * @return the sum of all arguments
      */
     public static long plus(long... values) {
@@ -64,6 +66,7 @@ public final class MathUtils {
      * Result the sum of all {@code float} values.
      *
      * @param values the arguments to be plus
+     *
      * @return the sum of all arguments
      */
     public static float plus(float... values) {
@@ -77,6 +80,7 @@ public final class MathUtils {
      * Result the sum of all {@code double} values.
      *
      * @param values the arguments to be plus
+     *
      * @return the sum of all arguments
      */
     public static double plus(double... values) {
@@ -90,7 +94,9 @@ public final class MathUtils {
      * Returns the average of the given {@code int} values.
      *
      * @param values the arguments that we will average
+     *
      * @return the average of the given values
+     *
      * @see MathUtils#plus(int...)
      */
     public static double average(int... values) {
@@ -101,7 +107,9 @@ public final class MathUtils {
      * Returns the average of the given {@code long} values.
      *
      * @param values the arguments that we will average
+     *
      * @return the average of the given values
+     *
      * @see MathUtils#plus(long...)
      */
     public static double average(long... values) {
@@ -112,7 +120,9 @@ public final class MathUtils {
      * Returns the average of the given {@code double} values.
      *
      * @param values the arguments that we will average
+     *
      * @return the average of the given values
+     *
      * @see MathUtils#plus(float...)
      */
     public static float average(float... values) {
@@ -124,7 +134,9 @@ public final class MathUtils {
      * Returns the average of the given {@code double} values.
      *
      * @param values the arguments that we will average
+     *
      * @return the average of the given values
+     *
      * @see MathUtils#plus(double...)
      */
     public static double average(double... values) {
@@ -143,7 +155,9 @@ public final class MathUtils {
      * </ul>
      *
      * @param value a value
+     *
      * @return the factorial of {@code value}
+     *
      * @throws ArithmeticException if the given value is negative.
      */
     public static long fact(long value) {
@@ -159,7 +173,9 @@ public final class MathUtils {
      *
      * @param a a first value
      * @param b a second value
+     *
      * @return the greatest common divisor of the given values
+     *
      * @see Math#abs(long)
      */
     public static int gcd(int a, int b) {
@@ -174,7 +190,9 @@ public final class MathUtils {
      *
      * @param a a first value
      * @param b a second value
+     *
      * @return the greatest common divisor of the given values
+     *
      * @see Math#abs(long)
      */
     public static long gcd(long a, long b) {
@@ -188,7 +206,9 @@ public final class MathUtils {
      *
      * @param a the first value
      * @param b the second value
+     *
      * @return the minimum common multiple of the given values
+     *
      * @see MathUtils#gcd(int, int)
      * @see Math#abs(long)
      */
@@ -203,7 +223,9 @@ public final class MathUtils {
      *
      * @param a the first value
      * @param b the second value
+     *
      * @return the minimum common multiple of the given values
+     *
      * @see MathUtils#gcd(long, long)
      * @see Math#abs(long)
      */
@@ -216,7 +238,9 @@ public final class MathUtils {
      *
      * @param a a first value
      * @param b a second value
+     *
      * @return true, if {@code a} and {@code b} is relatively primes.
+     *
      * @see MathUtils#gcd(long, long)
      * @see MathUtils#isPrime(long)
      */
@@ -231,7 +255,9 @@ public final class MathUtils {
      * Mersenne numbers.
      *
      * @param value a value
+     *
      * @return true, if number is prime
+     *
      * @see MathUtils#isCoprime(long, long)
      */
     public static boolean isPrime(long value) {
@@ -250,6 +276,7 @@ public final class MathUtils {
      * <p>If {@code value} is 14 then the prime factors is [2, 7]</p>
      *
      * @param value any value
+     *
      * @return prime factors
      */
     public static int[] getPrimeFactors(int value) {
@@ -275,6 +302,7 @@ public final class MathUtils {
      * <p>If {@code value} is 14 then the prime factors is [2, 7]</p>
      *
      * @param value any value
+     *
      * @return prime factors
      */
     public static long[] getPrimeFactors(long value) {
