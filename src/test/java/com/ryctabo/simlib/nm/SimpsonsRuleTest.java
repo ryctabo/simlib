@@ -16,6 +16,8 @@
 
 package com.ryctabo.simlib.nm;
 
+import com.ryctabo.simlib.nm.SimpsonsRule.Composite;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,42 +32,46 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0-SNAPSHOT
  */
 @RunWith(Parameterized.class)
-public class NumericalIntegrationTest {
+public class SimpsonsRuleTest {
 
     private final int iterations;
 
-    private final double lowerLimit;
+    private final Composite composite;
 
-    private final double upperLimit;
+    private final DefiniteIntegral integral;
 
     private final double actual;
 
-    public NumericalIntegrationTest(int iterations, double lowerLimit,
-                                    double upperLimit, double actual) {
+    private SimpsonsRule rule;
+
+    public SimpsonsRuleTest(int iterations, Composite composite,
+                            DefiniteIntegral integral, double actual) {
         this.iterations = iterations;
-        this.lowerLimit = lowerLimit;
-        this.upperLimit = upperLimit;
+        this.composite = composite;
+        this.integral = integral;
         this.actual = actual;
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> getData() {
         return Arrays.asList(new Object[][]{
-                {10, 0d, 0.8d, 0.08d},
-                {200, 2d, 4d, 0.01d},
-                {50, 1d, 8d, 0.14d}
+                {4, Composite.MAIN, new DefiniteIntegral(x -> 1 / (x + 1), 2, 3), 0.2876831d},
+                {12, Composite.THREE_EIGHTHS, new DefiniteIntegral(x -> x * (x - 2) * (x - 3), 0, 5), 22.9166667}
         });
     }
 
+    @Before
+    public void setUp() {
+        this.rule = new SimpsonsRule(iterations, composite);
+    }
+
     @Test
-    public void testCalculateStepSize() {
-        NumericalIntegration ni = new NumericalIntegration(this.iterations) {
-            @Override
-            protected double solveImplementation(DefiniteIntegral di) {
-                return 0d;
-            }
-        };
-        ni.solve(new DefiniteIntegral(null, lowerLimit, upperLimit));
-        assertEquals(ni.getStepSize(), actual, 1e-7);
+    public void testSolve() {
+        assertEquals(this.rule.solve(integral), actual, 1e-7);
+    }
+
+    @Test
+    public void testGetComposite() {
+        assertEquals(this.rule.getComposite(), composite);
     }
 }
