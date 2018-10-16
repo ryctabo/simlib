@@ -17,12 +17,30 @@
 package com.ryctabo.simlib.nm;
 
 /**
+ * Represents a function {@code f(x)} of a real variable {@code x} that
+ * is an argument of the function and produces a result.
+ * <p>
+ * <strong>For example:</strong>
+ * <p>
+ * <i>f(x) = sen(x)/x</i> is equal to {@code (x) -> (1 / x) * Math.sin(x) }
+ * <p><p>
+ * This is a <a href="package-summary.html">functional interface</a>
+ * whose functional method is {@link #calculate(double)}.
+ *
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
+ * @since 1.8
  */
 @FunctionalInterface
 public interface Fdx {
 
+    /**
+     * Calculate the result of the function provided.
+     *
+     * @param x the {@code x} real variable
+     *
+     * @return the function result
+     */
     double calculate(double x);
 
 }
