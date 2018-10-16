@@ -29,13 +29,17 @@ public class DefiniteIntegral {
     private double upperLimit;
 
     public DefiniteIntegral(Fdx function, double lowerLimit, double upperLimit) {
+        validateLimits(lowerLimit, upperLimit);
+        this.function = function;
+        this.lowerLimit = lowerLimit;
+        this.upperLimit = upperLimit;
+    }
+
+    private void validateLimits(double lowerLimit, double upperLimit) {
         if (upperLimit < lowerLimit) {
             throw new IllegalArgumentException("The lower limit can't " +
                     "be greater than upper limit.");
         }
-        this.function = function;
-        this.lowerLimit = lowerLimit;
-        this.upperLimit = upperLimit;
     }
 
     public Fdx getFunction() {
@@ -52,6 +56,7 @@ public class DefiniteIntegral {
 
     public void setLowerLimit(double lowerLimit) {
         this.lowerLimit = lowerLimit;
+        validateLimits(lowerLimit, getUpperLimit());
     }
 
     public double getUpperLimit() {
@@ -60,6 +65,7 @@ public class DefiniteIntegral {
 
     public void setUpperLimit(double upperLimit) {
         this.upperLimit = upperLimit;
+        validateLimits(getLowerLimit(), upperLimit);
     }
 
 }

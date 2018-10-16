@@ -60,8 +60,10 @@ public class SimpsonsRule extends NumericalIntegration {
         return composite;
     }
 
-    public void setComposite(Composite composite) {
-        this.composite = composite;
+    @Override
+    public void setIterations(int iterations) {
+        super.setIterations(iterations);
+        validateIterations();
     }
 
     private void validateIterations() {
