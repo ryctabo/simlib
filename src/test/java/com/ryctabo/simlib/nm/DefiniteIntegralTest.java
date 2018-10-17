@@ -41,4 +41,10 @@ public class DefiniteIntegralTest {
         integral.setUpperLimit(0);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreateAnInvalidIntegralInSetMethod3() {
+        DefiniteIntegral integral = new DefiniteIntegral(null, 1, 2);
+        integral.setInterval(1, 0);
+    }
+
 }
