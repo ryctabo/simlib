@@ -16,7 +16,10 @@
 
 package com.ryctabo.simlib.nm;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
@@ -39,6 +42,18 @@ public class DefiniteIntegralTest {
     public void testCreateAnInvalidIntegralInSetMethod2() {
         DefiniteIntegral integral = new DefiniteIntegral(null, 1, 2);
         integral.setUpperLimit(0);
+    }
+
+    @Test
+    public void testSetInterval() {
+        DefiniteIntegral integral = new DefiniteIntegral(null, 0, 1);
+        assertEquals(integral.getLowerLimit(), 0, 0d);
+        assertEquals(integral.getUpperLimit(), 1, 0d);
+
+        integral.setInterval(1, 2);
+
+        assertEquals(integral.getLowerLimit(), 1, 0d);
+        assertEquals(integral.getUpperLimit(), 2, 0d);
     }
 
     @Test(expected = IllegalArgumentException.class)
