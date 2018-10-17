@@ -17,20 +17,43 @@
 package com.ryctabo.simlib.nm;
 
 /**
+ * The <strong>SimpsonsRule</strong> class represents to the
+ * implementation of a numerical integration method for approximating
+ * to {@link DefiniteIntegral}.
+ *
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
+ * @see <a href="https://en.wikipedia.org/wiki/Simpson%27s_rule">Simpson's rule</a>
  */
 public class SimpsonsRule extends NumericalIntegration {
 
+    /**
+     * Represents a composition of {@link SimpsonsRule}.
+     */
     public enum Composite {
-        MAIN(2, 4, 2), THREE_EIGHTHS(3, 3, 2);
 
+        /** The main composite of Simpson's rule. */
+        MAIN(2, 4, 2),
+
+        /** The composite of Simpson's 3/8 rule. */
+        THREE_EIGHTHS(3, 3, 2);
+
+        /** The modulus */
         final int modulus;
 
+        /** The first multiplier. */
         final int m1;
 
+        /** The second multiplier. */
         final int m2;
 
+        /**
+         * Create an enumeration from the given parameters.
+         *
+         * @param modulus the modulus
+         * @param m1      the first multiplier
+         * @param m2      the second multiplier
+         */
         Composite(int modulus, int m1, int m2) {
             this.modulus = modulus;
             this.m1 = m1;
@@ -39,13 +62,27 @@ public class SimpsonsRule extends NumericalIntegration {
 
     }
 
+    /** The composite of Simpson's rule. */
     private Composite composite = Composite.MAIN;
 
+    /**
+     * Create an instance of {@link SimpsonsRule} from the given
+     * parameters and the main composite.
+     *
+     * @param iterations number of iterations
+     */
     public SimpsonsRule(int iterations) {
         super(iterations);
         validateIterations();
     }
 
+    /**
+     * Create an intance of {@link SimpsonsRule} from the given
+     * parameters.
+     *
+     * @param iterations the number of iterations
+     * @param composite  the composite Simpson's rule
+     */
     public SimpsonsRule(int iterations, Composite composite) {
         super(iterations);
 
@@ -56,6 +93,11 @@ public class SimpsonsRule extends NumericalIntegration {
         validateIterations();
     }
 
+    /**
+     * Get composite of Simpson's rule.
+     *
+     * @return the composite
+     */
     public Composite getComposite() {
         return composite;
     }
@@ -66,6 +108,13 @@ public class SimpsonsRule extends NumericalIntegration {
         validateIterations();
     }
 
+    /**
+     * Validate if the number of iterations is valid for
+     * apply the Simpson's rule.
+     *
+     * @throws ArithmeticException if the number of iterations are invalid to
+     *                             apply the Simpson's rule
+     */
     private void validateIterations() {
         if (this.iterations % this.composite.modulus != 0) {
             final String formatter = "The number of iterations has to bea module of %d";
@@ -73,6 +122,14 @@ public class SimpsonsRule extends NumericalIntegration {
         }
     }
 
+    /**
+     * Implementation of {@link SimpsonsRule} method.
+     *
+     * @param di definite integral
+     *
+     * @return {@code double} value, result of applying the implementation
+     * of Simpson's rule.
+     */
     @Override
     protected double solveImplementation(DefiniteIntegral di) {
         Fdx fn = di.getFunction();

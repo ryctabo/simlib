@@ -17,12 +17,28 @@
 package com.ryctabo.simlib.nm;
 
 /**
+ * Represents a function that accepts one {@link DefiniteIntegral}
+ * and produces a result of that integral {@code f(x)} in a interval
+ * {@code [a,b]} of the real line.
+ * <p>
+ * This is a <a href="package-summary.html">functional interface</a>
+ * whose functional method is {@link #solve(DefiniteIntegral)}.
+ *
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
+ * @since 1.8
  */
 @FunctionalInterface
 public interface RuleX {
 
-    double solve(DefiniteIntegral definiteIntegral);
+    /**
+     * Returns a {@code double} value that represents the result of
+     * solving a definite integral {@code f(x)} with an interval {@code [a,b]}.
+     *
+     * @param integral Integral {@code f(x)} with an interval {@code [a,b]}.
+     *
+     * @return result to solve the definite integral.
+     */
+    double solve(DefiniteIntegral integral);
 
 }

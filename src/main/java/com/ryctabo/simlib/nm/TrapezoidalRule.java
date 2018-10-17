@@ -17,15 +17,33 @@
 package com.ryctabo.simlib.nm;
 
 /**
+ * The <strong>TrapezoidalRule</strong> class represents to the
+ * implementation of a numerical integration method for approximating
+ * to {@link DefiniteIntegral}.
+ *
  * @author Gustavo Pacheco (ryctabo at gmail.com)
  * @version 1.0-SNAPSHOT
+ * @see <a href="https://en.wikipedia.org/wiki/Trapezoidal_rule">Trapezoidal rule</a>
  */
 public class TrapezoidalRule extends NumericalIntegration {
 
+    /**
+     * Create an instance of {@link TrapezoidalRule}.
+     *
+     * @param iterations number of iterations
+     */
     public TrapezoidalRule(int iterations) {
         super(iterations);
     }
 
+    /**
+     * Implementation of {@link TrapezoidalRule} method.
+     *
+     * @param di definite integral
+     *
+     * @return {@code double} value, result of applying the implementation
+     * of trapezoidal rule.
+     */
     @Override
     protected double solveImplementation(DefiniteIntegral di) {
         Fdx fn = di.getFunction();
