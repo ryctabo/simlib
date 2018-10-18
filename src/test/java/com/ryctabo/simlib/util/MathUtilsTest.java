@@ -36,7 +36,7 @@ import static org.junit.Assert.*;
 public class MathUtilsTest {
 
     @Test
-    public void testAverage() throws Exception {
+    public void testAverage() {
         //Set up test
         PowerMock.mockStaticPartial(MathUtils.class, "plus");
 

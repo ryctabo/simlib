@@ -16,6 +16,7 @@
 
 package com.ryctabo.simlib.nm;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -40,6 +41,8 @@ public class NumericalIntegrationTest {
 
     private final double actual;
 
+    private NumericalIntegration ni;
+
     public NumericalIntegrationTest(int iterations, double lowerLimit,
                                     double upperLimit, double actual) {
         this.iterations = iterations;
@@ -57,15 +60,24 @@ public class NumericalIntegrationTest {
         });
     }
 
-    @Test
-    public void testCalculateStepSize() {
-        NumericalIntegration ni = new NumericalIntegration(this.iterations) {
+    @Before
+    public void setUp() {
+        this.ni = new NumericalIntegration(this.iterations) {
             @Override
             protected double solveImplementation(DefiniteIntegral di) {
                 return 0d;
             }
         };
-        ni.solve(new DefiniteIntegral(null, lowerLimit, upperLimit));
+    }
+
+    @Test
+    public void testGetIteration() {
+        assertEquals(this.ni.getIterations(), iterations);
+    }
+
+    @Test
+    public void testCalculateStepSize() {
+        this.ni.solve(new DefiniteIntegral(null, lowerLimit, upperLimit));
         assertEquals(ni.getStepSize(), actual, 1e-7);
     }
 }

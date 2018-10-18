@@ -66,6 +66,12 @@ public class SimpsonsRuleTest {
     }
 
     @Test
+    public void testSetIteration() {
+        this.rule.setIterations(iterations);
+        assertEquals(this.rule.getIterations(), iterations);
+    }
+
+    @Test
     public void testSolve() {
         assertEquals(this.rule.solve(integral), actual, 1e-7);
     }

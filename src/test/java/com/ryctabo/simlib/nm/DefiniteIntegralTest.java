@@ -20,6 +20,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 
 /**
  * @author Gustavo Pacheco (ryctabo at gmail.com)
@@ -45,13 +47,28 @@ public class DefiniteIntegralTest {
     }
 
     @Test
+    public void testSetFunction() {
+        DefiniteIntegral integral = new DefiniteIntegral(null, 0d, 1d);
+        assertNull(integral.getFunction());
+
+        Fdx function = x -> x + 1;
+        integral.setFunction(function);
+        assertSame(integral.getFunction(), function);
+    }
+
+    @Test
     public void testSetInterval() {
         DefiniteIntegral integral = new DefiniteIntegral(null, 0, 1);
         assertEquals(integral.getLowerLimit(), 0, 0d);
         assertEquals(integral.getUpperLimit(), 1, 0d);
 
-        integral.setInterval(1, 2);
+        integral.setUpperLimit(3d);
+        assertEquals(integral.getUpperLimit(), 3d, 0d);
 
+        integral.setLowerLimit(2d);
+        assertEquals(integral.getLowerLimit(), 2d, 0d);
+
+        integral.setInterval(1, 2);
         assertEquals(integral.getLowerLimit(), 1, 0d);
         assertEquals(integral.getUpperLimit(), 2, 0d);
     }
