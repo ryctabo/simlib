@@ -2,19 +2,44 @@ language: java
 sudo: false
 
 jdk:
-  - oraclejdk8
+- openjdk8
 
 os:
-  - linux
+- linux
 
-branches:
-  only:
-    - develop
-    - master
-
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
 
-script:
-  - ./gradlew clean build test
+stages:
+- build
+- test
+- name: deploy
+  if: branch = master
+
+jobs:
+  include:
+  - stage: build
+    script: ./gradlew clean assemble
+
+  - stage: test
+    script: ./gradlew check
+    after_success:
+    - ./gradlew jacocoTestReport coveralls
+
+  - stage: deploy
+    script: ./gradlew jar
+
+notifications:
+  email:
+    recipients:
+    - ryctabo@gmail.com
+    on_success: always
+    on_failure: always
+
+after_script:
+- echo "Travis CI end!"

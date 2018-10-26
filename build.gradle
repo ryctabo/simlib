@@ -1,4 +1,8 @@
-apply plugin: 'java-library'
+plugins {
+    id 'java-library'
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.8.2'
+}
 
 group 'com.github.ryctabo'
 version '1.0.0-SNAPSHOT'
@@ -15,6 +19,17 @@ dependencies {
     testImplementation 'org.easymock:easymock:3.4'
     testImplementation 'org.powermock:powermock-module-junit4:1.7.0'
     testImplementation 'org.powermock:powermock-api-easymock:1.7.0'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+coveralls {
+    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
 }
 
 jar {
